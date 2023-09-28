@@ -1,0 +1,15 @@
+<?php
+namespace Modules\{modules}\Src\Repositories;
+
+use App\Repositories\BaseRepository;
+use Modules\{modules}\Src\Repositories\{modules}RepositoryInterface;
+
+
+class {modules}Repository extends BaseRepository implements {modules}RepositoryInterface {
+
+    public function getModel()
+    {
+
+    }
+
+}
