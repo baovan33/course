@@ -45,7 +45,7 @@ class ModuleServiceProvider extends ServiceProvider {
 
         $this->app->singleton(
             UserRepository::class,
-            UserRepositoryInterface::class
+           // UserRepositoryInterface::class
         );
     }
 

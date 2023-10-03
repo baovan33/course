@@ -11,6 +11,8 @@
 
     <title>{{$pageTitle}} - BVA</title>
 
+    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.6/datatables.min.css" rel="stylesheet">
+
     <!-- Custom fonts for this template-->
     <link href="{{asset('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
@@ -19,6 +21,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
 {{--{{asset('backend/')}}--}}
 </head>
 
@@ -48,9 +51,9 @@
                @include('parts.backend.page_title')
 
                 <!-- Content Row -->
-                <div class="row">
+
                   @yield('content')
-                </div>
+
 
             </div>
             <!-- /.container-fluid -->
@@ -77,21 +80,24 @@
 @include('parts.backend.logout_modal')
 
 <!-- Bootstrap core JavaScript-->
-<script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+@yield('scripts')
+
+{{--<script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>--}}
 <script src="{{asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="{{asset('backend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+{{--<script src="{{asset('backend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>--}}
 
 <!-- Custom scripts for all pages-->
 <script src="{{asset('backend/js/sb-admin-2.min.js')}}"></script>
 
-<!-- Page level plugins -->
-<script src="{{asset('backend/vendor/chart.js/Chart.min.js')}}"></script>
+{{--<!-- Page level plugins -->--}}
+{{--<script src="{{asset('backend/vendor/chart.js/Chart.min.js')}}"></script>--}}
 
-<!-- Page level custom scripts -->
-<script src="{{asset('backend/js/demo/chart-area-demo.js')}}"></script>
-<script src="{{asset('backend/js/demo/chart-pie-demo.js')}}"></script>
+{{--<!-- Page level custom scripts -->--}}
+{{--<script src="{{asset('backend/js/demo/chart-area-demo.js')}}"></script>--}}
+{{--<script src="{{asset('backend/js/demo/chart-pie-demo.js')}}"></script>--}}
 
 </body>
 

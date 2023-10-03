@@ -147,11 +147,36 @@ class Module extends Command
                             File::put( $middlewareFile, $middlewareFileContent);
                         }
                     }
+
+                    //Requests
+                    $requestFolder      = base_path('modules/' . $name . '/Src/Http/Requests');
+
+                    if( !File::exists( $requestFolder ) ) {
+                        File::makeDirectory($requestFolder, 0755, true, true);
+
+                        //requestFile
+                        $requestFile = base_path('modules/' . $name . '/Src/Http/Requests/'.$name.'Request.php');
+                        if( !File::exists( $requestFile ) ) {
+                            $requestFileContent      = file_get_contents(app_path('Console/Commands/Templates/Request.txt'));
+                            $requestFileContent      = str_replace('{modules}', $name, $requestFileContent);
+
+                            File::put( $requestFile, $requestFileContent);
+                        }
+                    }
                 }
                 //Models
-                $modelFoler             = base_path('modules/' . $name . '/Src/Models');
+                $modelFoler                    = base_path('modules/' . $name . '/Src/Models');
                 if( !File::exists( $modelFoler ) ) {
                     File::makeDirectory($modelFoler, 0755, true, true);
+
+                    //ModelFile
+                    $modelFile = base_path('modules/' . $name . '/Src/Models/'.$name.'.php');
+                    if( !File::exists( $modelFile ) ) {
+                        $modelFileContent      = file_get_contents(app_path('Console/Commands/Templates/Model.txt'));
+                        $modelFileContent      = str_replace('{modules}', $name, $modelFileContent);
+
+                        File::put( $modelFile, $modelFileContent);
+                    }
                 }
                 //Repositories
                 $repositoriesFoler       = base_path('modules/' . $name . '/Src/Repositories');
