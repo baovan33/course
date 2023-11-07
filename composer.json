@@ -6,11 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "doctrine/dbal": "^3.7",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "unisharp/laravel-filemanager": "dev-master",
         "yajra/laravel-datatables-oracle": "^9.21.2"
     },
     "require-dev": {
@@ -30,6 +32,9 @@
         "classmap": [
             "database/seeders",
             "database/migrations"
+        ],
+        "files": [
+            "app/Helpers/function.php"
         ]
     },
     "autoload-dev": {

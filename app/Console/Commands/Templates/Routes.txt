@@ -1,10 +1,23 @@
 <?php
  use Illuminate\Support\Facades\Route;
 
- Route::group(['namespace' => 'Modules\{modules}\Src\Http\Controllers'], function() {
-     Route::prefix('admin')->group(function() {
-         Route::prefix('{modules}s')->group(function() {
-            Route::get('/', '{modules}Controller@index')->name('admin.{modules}s.index');
+ Route::group(['namespace' => 'Modules\{modules}\Src\Http\Controllers', 'middleware' => 'web'], function() {
+     Route::prefix('admin')->name('admin.')->group(function() {
+         Route::prefix('{modules}s')->name('{modules}s.')->group(function() {
+
+               Route::get('/', '{modules}Controller@index')->name('index');
+
+               Route::get('/data', '{modules}Controller@data')->name('data');
+
+               Route::get('/create', '{modules}Controller@create')->name('create');
+
+               Route::post('/create', '{modules}Controller@store')->name('store');
+
+               Route::get('/edit/{{modules}}','{modules}Controller@edit')->name('edit');
+
+               Route::put('/edit/{{modules}}','{modules}Controller@update')->name('update');
+
+               Route::delete('/delete/{{modules}}','{modules}Controller@delete')->name('delete');
          });
      });
 

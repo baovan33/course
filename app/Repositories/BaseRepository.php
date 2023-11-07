@@ -49,7 +49,7 @@ abstract class BaseRepository implements RepositoryInterface {
         $result = $this->model->find($id);
 
         if ( $result ) {
-            return $this->model->delete();
+            return $result->delete();
         }
 
         return false;

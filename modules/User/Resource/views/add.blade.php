@@ -8,7 +8,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control {{$errors->has('email')? ' is-invalid':false}}" name="email" id="inputEmail4" placeholder="igexixon@gmail.com" value="{{old('name')}}">
+                    <input type="email" class="form-control {{$errors->has('email')? ' is-invalid':false}}" name="email" id="inputEmail4" placeholder="igexixon@gmail.com" value="{{old('email')}}">
                     @error('email')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -51,7 +51,7 @@
             </div>
             <div class="form-row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary" style="width: 10%;">Sign in</button>
+                    <button type="submit" class="btn btn-primary" style="width: 10%;">Register</button>
                     <a href="{{route('admin.users.index')}}" class="btn btn-danger" style="width: 10%;">Cancel</a>
                 </div>
 

@@ -3,11 +3,11 @@
 namespace Modules\{modules}\Src\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\{modules} as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class {modules} extends Authenticatable
+class {modules} extends model
 {
     use HasApiTokens, HasFactory, Notifiable;
 

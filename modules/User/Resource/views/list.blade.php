@@ -3,11 +3,12 @@
     @if (session('msg'))
         <div class="alert alert-success">{{session('msg')}}</div>
     @endif
-    <div class="">
+    <div class="border">
+        <h2 class="text-center pt-3 font-weight-bold pb-2 border-bottom">LISR USER! </h2>
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <p class="text-right" style="margin-top: 4px;">
-                    <a href="{{route('admin.users.create')}}" class="btn btn-primary">Add New User</a>
+                    <a href="{{route('admin.users.create')}}" class="btn btn-primary mr-3">Add New User</a>
                 </p>
             </div>
         </div>
@@ -40,7 +41,7 @@
                             </tfoot>
 
                         </table>
-
+                @include('parts.backend.form-delete')
                 </div>
 
             </div>
@@ -70,6 +71,32 @@
 
                 ]
             })
+        });
+    </script>
+    <script>
+        const tableList     = document.querySelector('#dataTable');
+        const deleteForm    = document.querySelector('.delete-form');
+
+        tableList.addEventListener("click", (e) => {
+            if (e.target.classList.contains('delete-action')) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Bạn có chắc chắn muốn xoá ??',
+                    text: "Xoá sẽ không thể khôi phục lại!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'ok, Xoá !'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                            const action        = e.target.href;
+                            deleteForm.action   = action;
+                            deleteForm.submit();
+                    }
+                })
+
+            }
         });
     </script>
 @endsection
