@@ -1,7 +1,6 @@
 <?php
  use Illuminate\Support\Facades\Route;
 
- Route::group(['namespace' => 'Modules\Categories\Src\Http\Controllers', 'middleware' => 'web'], function() {
      Route::prefix('admin')->name('admin.')->group(function() {
          Route::prefix('categories')->name('categories.')->group(function() {
              Route::get('/', 'CategoriesController@index')->name('index');
@@ -20,4 +19,4 @@
          });
      });
 
- });
+

@@ -1,0 +1,11 @@
+<?php
+namespace Modules\{module}\Src\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+
+class {name} extends Controller {
+
+   public function __construct() {
+
+   }
+}

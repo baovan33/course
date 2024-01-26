@@ -1,8 +1,15 @@
 <?php
 namespace Modules;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\File;
+use Modules\Categories\Src\Repositories\CategoriesRepository;
+use Modules\Categories\Src\Repositories\CategoriesRepositoryInterface;
+use Modules\Courses\Src\Repositories\CoursesRepository;
+use Modules\Courses\Src\Repositories\CoursesRepositoryInterface;
+use Modules\Teacher\Src\Repositories\TeacherRepository;
+use Modules\Teacher\Src\Repositories\TeacherRepositoryInterface;
 use Modules\User\Src\Commands\TestCommand;
 use Modules\User\Src\Http\Middlewares\DemoMiddleware;
 use Modules\User\Src\Repositories\UserRepository;
@@ -28,6 +35,32 @@ class ModuleServiceProvider extends ServiceProvider {
         }
     }
 
+    public function bindingRepository() {
+        //User Repository
+        $this->app->singleton(
+            UserRepositoryInterface::class,
+            UserRepository::class,
+        );
+
+        //Category Repository
+        $this->app->singleton(
+            CategoriesRepositoryInterface::class,
+            CategoriesRepository::class,
+        );
+
+        //Course Repository
+        $this->app->singleton(
+            CoursesRepositoryInterface::class,
+            CoursesRepository::class
+        );
+
+        //teacher Repository
+        $this->app->singleton(
+            TeacherRepositoryInterface::class,
+            TeacherRepository::class
+        );
+    }
+
     public function register() {
         //Configs
         $modules = $this->getModules();
@@ -43,10 +76,8 @@ class ModuleServiceProvider extends ServiceProvider {
         //Commands
         $this->commands($this->commands);
 
-        $this->app->singleton(
-            UserRepository::class,
-           // UserRepositoryInterface::class
-        );
+        //Repository
+        $this->bindingRepository();
     }
 
     private function getModules() {
@@ -59,14 +90,26 @@ class ModuleServiceProvider extends ServiceProvider {
        $modulePath = __DIR__ . "/{$module}";
 
        //Khai bao Routes
-        if ( File::exists( $modulePath. '/Routes/routes.php') ) {
-            $this->loadRoutesFrom($modulePath . '/Routes/routes.php');
-        }
+
+        Route::group(['namespace' => "Modules\\{$module}\Src\Http\Controllers", 'middleware' => 'web'], function () use ($modulePath) {
+            if ( File::exists( $modulePath. '/Routes/web.php') ) {
+                $this->loadRoutesFrom($modulePath . '/Routes/web.php');
+            }
+        });
+
+
+        Route::group(['namespace' => "Modules\\{$module}\Src\Http\Controllers", 'middleware' => 'api', 'prefix' => 'api'], function () use ($modulePath) {
+            if ( File::exists( $modulePath. '/Routes/api.php') ) {
+                $this->loadRoutesFrom($modulePath . '/Routes/api.php');
+            }
+        });
 
         //Khai bao migration
         if ( File::exists( $modulePath. '/Migrations') ) {
             $this->loadMigrationsFrom($modulePath . '/Migrations');
         }
+
+
 
         //Khai bao languages
         if ( File::exists( $modulePath. '/Resource/lang') ) {

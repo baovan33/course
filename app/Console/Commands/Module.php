@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use File;
 
+
 class Module extends Command
 {
     /**
@@ -12,7 +13,7 @@ class Module extends Command
      *
      * @var string
      */
-    protected $signature = 'command:module {name}';
+    protected $signature = 'make:module {name}';
 
     /**
      * The console command description.
@@ -90,12 +91,20 @@ class Module extends Command
             if( !File::exists( $routeFolder ) ) {
                 File::makeDirectory($routeFolder, 0755, true, true);
 
-                //Tao file routes.php
-                $routesFile = base_path('modules/' . $name . '/Routes/routes.php');
+                //Tao file web.php
+                $routesFile = base_path('modules/' . $name . '/Routes/web.php');
                 if( !File::exists( $routesFile ) ) {
                     $routesFileContent      = file_get_contents(app_path('Console/Commands/Templates/Routes.txt'));
                     $routesFileContent      = str_replace('{modules}', strtolower($name), $routesFileContent);
                     File::put($routesFile, $routesFileContent);
+                }
+
+                //Tao file api
+                $apiFile = base_path('modules/' . $name . '/Routes/api.php');
+                if( !File::exists( $apiFile ) ) {
+                    $apiFileContent      = file_get_contents(app_path('Console/Commands/Templates/Api.txt'));
+                    $apiFileContent      = str_replace('{modules}', strtolower($name), $apiFileContent);
+                    File::put($apiFile, $apiFileContent);
                 }
 
             }
@@ -155,9 +164,9 @@ class Module extends Command
                         File::makeDirectory($requestFolder, 0755, true, true);
 
                         //requestFile
-                        $requestFile = base_path('modules/' . $name . '/Src/Http/Requests/'.$name.'Request.php');
+                        $requestFile = base_path('modules/' . $name . '/Src/Http/Requests/'.$name.'Migration.php');
                         if( !File::exists( $requestFile ) ) {
-                            $requestFileContent      = file_get_contents(app_path('Console/Commands/Templates/Request.txt'));
+                            $requestFileContent      = file_get_contents(app_path('Console/Commands/Templates/Migration.txt'));
                             $requestFileContent      = str_replace('{modules}', $name, $requestFileContent);
 
                             File::put( $requestFile, $requestFileContent);

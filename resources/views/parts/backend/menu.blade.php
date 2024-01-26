@@ -1,5 +1,3 @@
-<!-- Divider -->
-
 
 
 <!-- Nav Item - Pages Collapse Menu -->

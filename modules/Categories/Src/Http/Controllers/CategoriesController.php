@@ -5,13 +5,14 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Modules\Categories\Src\Http\Requests\CategoriesRequest;
 use Modules\Categories\Src\Repositories\CategoriesRepository;
+use Modules\Categories\Src\Repositories\CategoriesRepositoryInterface;
 use Yajra\DataTables\Facades\DataTables;
 
 class CategoriesController extends Controller {
 
     protected $categoryRepository;
 
-    public function __construct(CategoriesRepository $categoriesRepository) {
+    public function __construct(CategoriesRepositoryInterface $categoriesRepository) {
         $this->categoryRepository = $categoriesRepository;
     }
     public function index() {

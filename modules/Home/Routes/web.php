@@ -1,8 +1,7 @@
 <?php
  use Illuminate\Support\Facades\Route;
 
- Route::group(['namespace' => 'Modules\Home\Src\Http\Controllers', 'middleware' => 'web'], function() {
-     Route::prefix('admin')->name('admin.')->group(function() {
+ Route::prefix('admin')->name('admin.')->group(function() {
          Route::prefix('home')->name('home.')->group(function() {
 
                Route::get('/', 'HomeController@index')->name('index');
@@ -21,4 +20,4 @@
          });
      });
 
- });
+

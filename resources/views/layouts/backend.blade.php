@@ -88,6 +88,7 @@
 
 @yield('scripts')
 
+<script src="{{asset('backend/js/logout.js')}}"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="{{asset('backend/js/sb-admin-2.min.js')}}"></script>

@@ -24,7 +24,21 @@ class {modules}Request extends FormRequest
     public function rules()
     {
         return [
-            //
+
         ];
     }
+
+    public function message()
+     {
+            return [
+
+            ];
+      }
+
+     public function message()
+      {
+           return [
+
+               ];
+      }
 }
