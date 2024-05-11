@@ -90,7 +90,7 @@ class Module extends Command
 
             if( !File::exists( $routeFolder ) ) {
                 File::makeDirectory($routeFolder, 0755, true, true);
-
+            }
                 //Tao file web.php
                 $routesFile = base_path('modules/' . $name . '/Routes/web.php');
                 if( !File::exists( $routesFile ) ) {
@@ -107,7 +107,7 @@ class Module extends Command
                     File::put($apiFile, $apiFileContent);
                 }
 
-            }
+
 
             //Src
             $srcFolder = base_path('modules/' . $name . '/Src/');
