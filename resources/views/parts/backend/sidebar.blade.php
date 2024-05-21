@@ -25,9 +25,10 @@
       ])
 
     @include('parts.backend.menu', [
-        'title' => 'Courses',
-        'name'  => 'courses',
-        'icon'  => 'fa-solid fa-list'
+        'title'   => 'Courses',
+        'name'    => 'courses',
+        'icon'    => 'fa-solid fa-list',
+        'include' => ['admin/lessons/*',]
       ])
     @include('parts.backend.menu', [
        'title' => 'Teacher',

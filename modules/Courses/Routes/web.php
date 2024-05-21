@@ -2,7 +2,9 @@
  use Illuminate\Support\Facades\Route;
 
  Route::prefix('admin')->name('admin.')->group(function() {
+
      Route::prefix('courses')->name('courses.')->group(function() {
+
             Route::get('/', 'CoursesController@index')->name('index');
 
              Route::get('/data', 'CoursesController@data')->name('data');
@@ -16,7 +18,9 @@
              Route::put('/edit/{course}','CoursesController@update')->name('update');
 
              Route::delete('/delete/{course}','CoursesController@delete')->name('delete');
-         });
+
+
+     });
  });
 
 Route::group(['prefix' => 'filemanager'], function () {

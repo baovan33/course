@@ -37,6 +37,8 @@ class CoursesController extends Controller {
     public function data() {
         $courses      = $this->coursesRepository->getAllCourses();
         return DataTables::of($courses)
+            ->editColumn('lessons', function ($course) {
+                return '<a href="'.route('admin.lessons.index', $course).'" class="btn btn-info" style=" display: block; margin: 0 auto; "> Lessons </a>'; })
             ->addColumn('edit', function ($course) {
                 return '<a href="'.route('admin.courses.edit', $course).'" class="btn btn-warning" style=" display: block; margin: 0 auto; "> Edit </a>'; })
             ->addColumn('delete', function ($course) {
@@ -58,7 +60,7 @@ class CoursesController extends Controller {
                     $price = 'Free';
                 }
                 return $price; })
-            ->rawColumns(['edit', 'delete', 'status', ])
+            ->rawColumns(['edit', 'delete', 'status', 'lessons' ])
             ->toJson();
 
     }

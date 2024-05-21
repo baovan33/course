@@ -7,10 +7,10 @@
         <i class="fas fa-fw fa-cog"></i>
         <span>{{$title}}</span>
     </a>
-    <div id="collapse{{$name}}" class="collapse {{ request()->is(trim(route('admin.' . $name . '.index', [], false), '/') .  '/*') || request()->is(trim(route('admin.' . $name . '.index', [], false), '/')) ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapse{{$name}}" class="collapse {{ activeSidebar($name, $include ?? []) ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{route('admin.'. $name .'.index')}}">List {{$name}}</a>
-            <a class="collapse-item" href="{{route('admin.'. $name .'.create')}}">Create</a>
+            <a class="collapse-item {{activeMenu('admin.'. $name .'.index') ? 'active' : ''}}" href="{{route('admin.'. $name .'.index')}}">List {{$name}}</a>
+            <a class="collapse-item {{activeMenu('admin.'. $name .'.create') ? 'active' : ''}}" href="{{route('admin.'. $name .'.create')}}">Create</a>
         </div>
     </div>
 </li>

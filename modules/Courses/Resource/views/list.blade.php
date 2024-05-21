@@ -27,6 +27,8 @@
                                 <th class="text-center" style="width: 10%;">Status</th>
                                 <th class="text-center" style="width: 5%;">Edit</th>
                                 <th class="text-center" style="width: 5%;">Delete</th>
+                                <th class="text-center" style="width: 6%;">Lessons</th>
+
                             </tr>
                             </thead>
                             <tfoot>
@@ -37,6 +39,7 @@
                                 <th class="text-center" style="width: 10%;">Status</th>
                                 <th class="text-center" style="width: 5%;">Edit</th>
                                 <th class="text-center" style="width: 5%;">Delete</th>
+                                <th class="text-center" style="width: 6%;">Lessons</th>
                             </tr>
                             </tfoot>
 
@@ -68,6 +71,7 @@
                     { "data": "status" },
                     { "data": "edit" },
                     { "data": "delete" },
+                    { "data": "lessons" },
 
                 ]
             })
